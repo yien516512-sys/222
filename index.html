@@ -1,76 +1,141 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>test</title>
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<title>rouaa老師的簡易計算機</title>
 
+<style>
+
+body{
+    background: linear-gradient(135deg,#2c3e50,#4ca1af);
+    font-family: Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.calculator{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+h1{
+    font-size:20px;
+}
+
+#display{
+    width:220px;
+    height:50px;
+    font-size:22px;
+    margin-bottom:15px;
+    text-align:right;
+    padding-right:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:50px;
+    height:50px;
+    margin:5px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+.number{
+    background:#ecf0f1;
+}
+
+.operator{
+    background:#3498db;
+    color:white;
+}
+
+.equal{
+    background:#2ecc71;
+    color:white;
+}
+
+.clear{
+    background:#e74c3c;
+    color:white;
+}
+
+</style>
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>rouaa老師的簡易計算機</title>
-    <style>
-        input[type="button"] {
-            width: 50px;
-            height: 50px;
-        }
-        input[type="text"] {
-            width: 200px;
-            height: 50px;
-        }
-    </style>
-</head>
-<body>
-    <h1>rouaa老師的簡易計算機</h1>
-  <hr>
-   <hr>
-     <hr>
-    <input type="text" id="display" readonly>
-    <br>
-    <input type="button" value="1" onclick="appendToDisplay('1')">
-    <input type="button" value="2" onclick="appendToDisplay('2')">
-    <input type="button" value="3" onclick="appendToDisplay('3')">
-    <input type="button" value="+" onclick="appendToDisplay('+')">
-    <br>
-    <input type="button" value="4" onclick="appendToDisplay('4')">
-    <input type="button" value="5" onclick="appendToDisplay('5')">
-    <input type="button" value="6" onclick="appendToDisplay('6')">
-    <input type="button" value="-" onclick="appendToDisplay('-')">
-    <br>
-    <input type="button" value="7" onclick="appendToDisplay('7')">
-    <input type="button" value="8" onclick="appendToDisplay('8')">
-    <input type="button" value="9" onclick="appendToDisplay('9')">
-    <input type="button" value="*" onclick="appendToDisplay('*')">
-    <br>
-    <input type="button" value="0" onclick="appendToDisplay('0')">
-    <input type="button" value="C" onclick="clearDisplay()">
-    <input type="button" value="=" onclick="calculate()">
-    <input type="button" value="/" onclick="appendToDisplay('/')">
-    <br>
-    <script>
-        function appendToDisplay(value) {
-            document.getElementById("display").value += value;
-        }
 
-        function clearDisplay() {
-            document.getElementById("display").value = '';
-        }
+<body>
 
-        function calculate() {
-            var expression = document.getElementById("display").value;
-            try {
-                document.getElementById("display").value = eval(expression);
-            } catch (e) {
-                document.getElementById("display").value = 'Error';
-            }
-        }
-    </script>
-</body>
-</html>
-<!-- partial -->
-  
+<div class="calculator">
+
+<h1>rouaa老師的簡易計算機</h1>
+
+<input type="text" id="display" readonly>
+
+<br>
+
+<button class="number" onclick="appendToDisplay('1')">1</button>
+<button class="number" onclick="appendToDisplay('2')">2</button>
+<button class="number" onclick="appendToDisplay('3')">3</button>
+<button class="operator" onclick="appendToDisplay('+')">+</button>
+
+<br>
+
+<button class="number" onclick="appendToDisplay('4')">4</button>
+<button class="number" onclick="appendToDisplay('5')">5</button>
+<button class="number" onclick="appendToDisplay('6')">6</button>
+<button class="operator" onclick="appendToDisplay('-')">-</button>
+
+<br>
+
+<button class="number" onclick="appendToDisplay('7')">7</button>
+<button class="number" onclick="appendToDisplay('8')">8</button>
+<button class="number" onclick="appendToDisplay('9')">9</button>
+<button class="operator" onclick="appendToDisplay('*')">*</button>
+
+<br>
+
+<button class="number" onclick="appendToDisplay('0')">0</button>
+<button class="clear" onclick="clearDisplay()">C</button>
+<button class="equal" onclick="calculate()">=</button>
+<button class="operator" onclick="appendToDisplay('/')">/</button>
+
+</div>
+
+<script>
+
+function appendToDisplay(value){
+document.getElementById("display").value += value;
+}
+
+function clearDisplay(){
+document.getElementById("display").value='';
+}
+
+function calculate(){
+let expression=document.getElementById("display").value;
+
+try{
+document.getElementById("display").value=eval(expression);
+}
+catch{
+document.getElementById("display").value="Error";
+}
+
+}
+
+</script>
+
 </body>
 </html>
